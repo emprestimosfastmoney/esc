@@ -1,0 +1,1884 @@
+/* ============================================
+   ESC Landing Page - Styles v2.0
+   Empresa Simples de Crédito
+   Design System Reformulado para UX/UI Premium
+   ============================================ */
+
+/* ============================================
+   CSS CUSTOM PROPERTIES (Design Tokens)
+   ============================================ */
+:root {
+    /* === Cores Base === */
+    --color-black: #000000;
+    --color-dark-900: #0a0a0a;
+    --color-dark-800: #111111;
+    --color-dark-700: #1a1a1a;
+    --color-dark-600: #242424;
+    --color-dark-500: #2d2d2d;
+    --color-dark-400: #3d3d3d;
+    --color-dark-300: #4d4d4d;
+
+    --color-white: #ffffff;
+    --color-gray-100: #f5f5f5;
+    --color-gray-200: #e5e5e5;
+    --color-gray-300: #d4d4d4;
+    --color-gray-400: #a3a3a3;
+    --color-gray-500: #737373;
+    --color-gray-600: #525252;
+
+    /* === Cores de Marca === */
+    --color-gold-400: #f5d060;
+    --color-gold-500: #D4AF37;
+    --color-gold-600: #b8960f;
+    --color-gold-glow: rgba(212, 175, 55, 0.4);
+
+    --color-success-400: #4ade80;
+    --color-success-500: #22c55e;
+    --color-success-600: #16a34a;
+    --color-success-glow: rgba(34, 197, 94, 0.3);
+
+    --color-error-500: #ef4444;
+    --color-error-glow: rgba(239, 68, 68, 0.3);
+
+    /* === Gradientes === */
+    --gradient-gold: linear-gradient(135deg, var(--color-gold-400) 0%, var(--color-gold-500) 50%, var(--color-gold-600) 100%);
+    --gradient-dark: linear-gradient(180deg, var(--color-dark-800) 0%, var(--color-dark-900) 100%);
+    --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 100%);
+    --gradient-radial-gold: radial-gradient(ellipse at center, var(--color-gold-glow) 0%, transparent 70%);
+
+    /* === Tipografia === */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 2rem;
+    --font-size-4xl: 2.5rem;
+    --font-size-5xl: 3rem;
+
+    /* === Espaçamento === */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-10: 2.5rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+
+    /* === Border Radius === */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 9999px;
+
+    /* === Sombras === */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.6);
+    --shadow-gold: 0 0 40px var(--color-gold-glow);
+    --shadow-gold-sm: 0 0 20px var(--color-gold-glow);
+    --shadow-success: 0 0 30px var(--color-success-glow);
+
+    /* === Transições === */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* === Z-Index === */
+    --z-base: 1;
+    --z-dropdown: 100;
+    --z-sticky: 500;
+    --z-modal: 1000;
+    --z-toast: 2000;
+}
+
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+}
+
+html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    color: var(--color-white);
+    background-color: var(--color-dark-900);
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   PROGRESS HEADER - Barra de Progresso Premium
+   ============================================ */
+.progress-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-sticky);
+    background: linear-gradient(180deg, var(--color-dark-800) 0%, rgba(17, 17, 17, 0.95) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: var(--space-5) var(--space-6);
+}
+
+.progress-container {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.progress-step-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-400);
+    white-space: nowrap;
+}
+
+.progress-step-label strong {
+    color: var(--color-gold-500);
+    font-weight: 700;
+    margin: 0 2px;
+}
+
+.progress-step-description {
+    font-size: var(--font-size-xs);
+    color: var(--color-gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-left: var(--space-3);
+}
+
+.progress-track {
+    position: relative;
+    height: 4px;
+    background: var(--color-dark-500);
+    border-radius: var(--radius-full);
+    overflow: visible;
+}
+
+.progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 20%;
+    background: var(--gradient-gold);
+    border-radius: var(--radius-full);
+    transition: width var(--transition-slow);
+    box-shadow: var(--shadow-gold-sm);
+}
+
+.progress-steps {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+}
+
+.progress-steps .step {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--color-dark-400);
+    border: 2px solid var(--color-dark-500);
+    transition: all var(--transition-base);
+}
+
+.progress-steps .step.active {
+    background: var(--color-gold-500);
+    border-color: var(--color-gold-500);
+    box-shadow: var(--shadow-gold-sm);
+    transform: scale(1.2);
+}
+
+.progress-steps .step.completed {
+    background: var(--color-success-500);
+    border-color: var(--color-success-500);
+}
+
+/* ============================================
+   FUNNEL CONTAINER & PAGES
+   ============================================ */
+.funnel-container {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding-top: 90px;
+}
+
+.funnel-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 110px var(--space-6) var(--space-8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(40px);
+    transition: all var(--transition-slow);
+    pointer-events: none;
+}
+
+.funnel-page.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+.funnel-page.exit {
+    opacity: 0;
+    transform: translateX(-40px);
+}
+
+/* ============================================
+   PAGE BACKGROUND - Efeitos Visuais
+   ============================================ */
+.page-background {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.bg-gradient {
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-dark);
+}
+
+.bg-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.5;
+    animation: glow-pulse 8s ease-in-out infinite;
+}
+
+.bg-glow-1 {
+    width: 600px;
+    height: 600px;
+    background: var(--gradient-radial-gold);
+    top: -200px;
+    right: -200px;
+    animation-delay: 0s;
+}
+
+.bg-glow-2 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(ellipse at center, rgba(34, 197, 94, 0.15) 0%, transparent 70%);
+    bottom: -100px;
+    left: -100px;
+    animation-delay: 4s;
+}
+
+@keyframes glow-pulse {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.1); }
+}
+
+.bg-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.5;
+}
+
+/* Background Images - Sutis */
+.bg-image {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.08;
+    pointer-events: none;
+    mix-blend-mode: luminosity;
+}
+
+.bg-image-fachada {
+    background-image: url('../img/fachada.jpg');
+    opacity: 0.06;
+}
+
+.bg-image-business {
+    background-image: url('../img/business man.jpg');
+    opacity: 0.1;
+    background-position: center -50px;
+    background-size: 80%;
+}
+
+.bg-image-main {
+    background-image: url('../img/background_esc.png');
+    opacity: 0.12;
+    background-position: center;
+    background-size: cover;
+}
+
+/* ============================================
+   PAGE CONTENT
+   ============================================ */
+.page-content {
+    position: relative;
+    z-index: var(--z-base);
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.hero-content {
+    text-align: center;
+}
+
+/* ============================================
+   LOGO SECTION - Glassmorphism Premium
+   ============================================
+
+   Design System:
+   - Cor institucional amarela: #FFCC33 (--logo-glow-color)
+   - Glassmorphism com blur suave
+   - Halo de luz ambiente para profundidade
+   - Animações discretas de entrada e hover
+
+   ============================================ */
+
+/* -- Variáveis específicas do componente logo -- */
+:root {
+    /* Cor do glow institucional (amarelo ESC) */
+    --logo-glow-color: #FFCC33;
+    --logo-glow-color-soft: rgba(255, 204, 51, 0.4);
+    --logo-glow-color-subtle: rgba(255, 204, 51, 0.15);
+
+    /* Glassmorphism */
+    --logo-glass-bg: rgba(255, 255, 255, 0.03);
+    --logo-glass-border: rgba(255, 255, 255, 0.08);
+    --logo-glass-blur: 16px;
+
+    /* Dimensões */
+    --logo-max-width: 140px;
+    --logo-padding: 1.25rem 2rem;
+    --logo-radius: 20px;
+
+    /* Animações */
+    --logo-transition: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* -- Container principal da seção logo -- */
+.logo-section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: var(--space-6);
+
+    /* Animação de entrada */
+    animation: logo-fade-in 800ms ease-out forwards;
+}
+
+@keyframes logo-fade-in {
+    0% {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* -- Halo de luz ambiente (camada de fundo) -- */
+.logo-ambient-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    /* Tamanho do halo - maior que o card */
+    width: 280px;
+    height: 180px;
+
+    /* Gradiente radial com cor institucional */
+    background: radial-gradient(
+        ellipse at center,
+        var(--logo-glow-color-soft) 0%,
+        var(--logo-glow-color-subtle) 30%,
+        transparent 70%
+    );
+
+    /* Suavização */
+    filter: blur(40px);
+    opacity: 0.6;
+
+    /* Não interfere em cliques */
+    pointer-events: none;
+    z-index: 0;
+
+    /* Animação suave de pulso */
+    animation: ambient-pulse 6s ease-in-out infinite;
+}
+
+@keyframes ambient-pulse {
+    0%, 100% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+    50% {
+        opacity: 0.7;
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+}
+
+/* -- Card com Glassmorphism -- */
+.logo-glass-card {
+    position: relative;
+    z-index: 1;
+
+    /* Padding interno */
+    padding: var(--logo-padding);
+
+    /* Glassmorphism: fundo semi-transparente */
+    background: var(--logo-glass-bg);
+
+    /* Blur de fundo (glassmorphism) */
+    backdrop-filter: blur(var(--logo-glass-blur));
+    -webkit-backdrop-filter: blur(var(--logo-glass-blur));
+
+    /* Bordas suavizadas */
+    border-radius: var(--logo-radius);
+
+    /* Borda sutil */
+    border: 1px solid var(--logo-glass-border);
+
+    /* Sombra de ambiente para profundidade */
+    box-shadow:
+        /* Sombra externa suave */
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        /* Glow sutil na borda */
+        0 0 0 1px rgba(255, 204, 51, 0.05),
+        /* Inner highlight no topo */
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+    /* Transição suave para hover */
+    transition:
+        transform var(--logo-transition),
+        box-shadow var(--logo-transition),
+        background var(--logo-transition);
+
+    /* Overflow para conter elementos internos */
+    overflow: hidden;
+}
+
+/* -- Hover do card: sutil mas perceptível -- */
+.logo-glass-card:hover {
+    /* Escala aumenta 1% */
+    transform: scale(1.01);
+
+    /* Aumenta levemente o glow */
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.35),
+        0 0 20px var(--logo-glow-color-subtle),
+        0 0 0 1px rgba(255, 204, 51, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    /* Background levemente mais claro */
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* -- Brilho interno (efeito de luz no vidro) -- */
+.logo-inner-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+
+    /* Gradiente de luz vindo de cima */
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.04) 0%,
+        transparent 100%
+    );
+
+    /* Não interfere em cliques */
+    pointer-events: none;
+
+    /* Borda arredondada no topo */
+    border-radius: var(--logo-radius) var(--logo-radius) 0 0;
+}
+
+/* -- Imagem da logo -- */
+.logo-image {
+    position: relative;
+    z-index: 2;
+
+    /* Dimensão responsiva */
+    width: 100%;
+    max-width: var(--logo-max-width);
+    height: auto;
+
+    /* Display block para evitar espaço extra */
+    display: block;
+
+    /* Leve aumento de brilho para compensar glassmorphism */
+    filter: brightness(1.05) contrast(1.02);
+
+    /* Transição para hover */
+    transition: filter var(--logo-transition);
+}
+
+/* -- Hover na imagem: brilho +2% -- */
+.logo-glass-card:hover .logo-image {
+    filter: brightness(1.07) contrast(1.02);
+}
+
+/* -- Logo Simples (sem card/quadrado) -- */
+.logo-simple {
+    margin-bottom: var(--space-4);
+}
+
+.logo-image-transparent {
+    max-width: 160px;
+    height: auto;
+    display: block;
+    filter: brightness(1.1);
+    transition: transform var(--transition-base);
+}
+
+.logo-image-transparent:hover {
+    transform: scale(1.02);
+}
+
+@media (max-width: 480px) {
+    .logo-image-transparent {
+        max-width: 130px;
+    }
+}
+
+/* ============================================
+   RESPONSIVIDADE - Logo Section
+   ============================================ */
+
+/* Mobile pequeno */
+@media (max-width: 375px) {
+    :root {
+        --logo-max-width: 120px;
+        --logo-padding: 1rem 1.5rem;
+        --logo-radius: 16px;
+    }
+
+    .logo-ambient-glow {
+        width: 220px;
+        height: 140px;
+    }
+
+    .logo-section {
+        margin-bottom: var(--space-5);
+    }
+}
+
+/* Tablet e acima */
+@media (min-width: 768px) {
+    :root {
+        --logo-max-width: 160px;
+        --logo-padding: 1.5rem 2.5rem;
+    }
+
+    .logo-ambient-glow {
+        width: 320px;
+        height: 200px;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    :root {
+        --logo-max-width: 180px;
+    }
+
+    .logo-ambient-glow {
+        width: 360px;
+        height: 220px;
+    }
+}
+
+/* ============================================
+   HEADLINE GROUP - Hierarquia Tipográfica
+   ============================================ */
+.headline-group {
+    margin-bottom: var(--space-6);
+}
+
+.headline-primary {
+    font-size: clamp(var(--font-size-2xl), 6vw, var(--font-size-4xl));
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--color-white);
+    margin-bottom: var(--space-3);
+    letter-spacing: -0.02em;
+}
+
+.headline-secondary {
+    font-size: clamp(var(--font-size-base), 3vw, var(--font-size-lg));
+    font-weight: 400;
+    color: var(--color-gray-400);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.text-gradient {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.headline-uppercase {
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+}
+
+/* ============================================
+   TRUST INDICATORS - Badges de Confiança
+   ============================================ */
+.trust-indicators {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-8);
+}
+
+.trust-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    color: var(--color-gray-300);
+    transition: all var(--transition-base);
+}
+
+.trust-badge:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.trust-icon {
+    width: 14px;
+    height: 14px;
+    color: var(--color-gold-500);
+}
+
+.trust-badge-highlight {
+    background: rgba(212, 175, 55, 0.15);
+    border-color: rgba(212, 175, 55, 0.3);
+    color: var(--color-gold-400);
+    font-size: var(--font-size-sm);
+    padding: var(--space-3) var(--space-5);
+}
+
+/* ============================================
+   QUESTION SECTION
+   ============================================ */
+.question-section {
+    margin-bottom: var(--space-6);
+    margin-top: var(--space-8);
+    padding-top: var(--space-6);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.question-text {
+    font-size: var(--font-size-lg);
+    font-weight: 500;
+    color: var(--color-gray-200);
+    margin-bottom: var(--space-6);
+}
+
+.question-text strong {
+    color: var(--color-white);
+    font-weight: 700;
+}
+
+.question-highlight {
+    color: var(--color-gold-400);
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+}
+
+.question-highlight strong {
+    color: var(--color-gold-500);
+}
+
+.question-note {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-500);
+    margin-top: var(--space-4);
+}
+
+/* ============================================
+   CTA BUTTONS - Botões de Ação
+   ============================================ */
+.cta-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    max-width: 380px;
+    margin: 0 auto;
+}
+
+.cta-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.cta-divider {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    margin: var(--space-1) 0;
+}
+
+.cta-divider::before,
+.cta-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--color-dark-400);
+}
+
+.cta-divider span {
+    font-size: var(--font-size-xs);
+    color: var(--color-gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.cta-group-horizontal {
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+@media (min-width: 480px) {
+    .cta-group-horizontal {
+        flex-direction: row;
+    }
+    .cta-group-horizontal .cta-primary,
+    .cta-group-horizontal .cta-secondary {
+        flex: 1;
+    }
+}
+
+/* CTA Primary - Botão Principal */
+.cta-primary {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: var(--space-5) var(--space-6);
+    background: var(--gradient-gold);
+    border: none;
+    border-radius: var(--radius-lg);
+    color: var(--color-dark-900);
+    font-family: inherit;
+    font-size: var(--font-size-base);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    overflow: hidden;
+}
+
+.cta-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.cta-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-gold);
+}
+
+.cta-primary:hover::before {
+    opacity: 1;
+}
+
+.cta-primary:active {
+    transform: translateY(-1px);
+}
+
+.cta-primary.cta-centered {
+    justify-content: center;
+}
+
+.cta-content {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.cta-icon {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
+.cta-arrow {
+    width: 20px;
+    height: 20px;
+    transition: transform var(--transition-base);
+}
+
+.cta-primary:hover .cta-arrow {
+    transform: translateX(4px);
+}
+
+/* CTA Secondary - Botão Secundário */
+.cta-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    width: 100%;
+    padding: var(--space-4) var(--space-6);
+    background: transparent;
+    border: 1px solid var(--color-dark-400);
+    border-radius: var(--radius-lg);
+    color: var(--color-gray-400);
+    font-family: inherit;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.cta-secondary:hover {
+    border-color: var(--color-gray-500);
+    color: var(--color-gray-200);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.cta-secondary .cta-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.cta-secondary-alt {
+    padding: var(--space-5) var(--space-6);
+    font-size: var(--font-size-base);
+    border-color: var(--color-dark-500);
+}
+
+.cta-secondary-alt:hover {
+    border-color: var(--color-gray-400);
+}
+
+/* CTA Hints - Microcopy */
+.cta-hint {
+    display: block;
+    font-size: var(--font-size-xs);
+    color: var(--color-gray-500);
+    text-align: center;
+}
+
+/* ============================================
+   ELIGIBILITY NOTE
+   ============================================ */
+.eligibility-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    background: rgba(212, 175, 55, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: var(--radius-md);
+    margin-top: var(--space-6);
+}
+
+.eligibility-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--color-gold-500);
+    flex-shrink: 0;
+}
+
+.eligibility-note p {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-400);
+}
+
+.eligibility-note strong {
+    color: var(--color-gold-500);
+}
+
+/* ============================================
+   BADGE HIGHLIGHT
+   ============================================ */
+.badge-highlight {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+    color: var(--color-gray-300);
+    margin-bottom: var(--space-6);
+}
+
+.badge-highlight .badge-icon {
+    width: 14px;
+    height: 14px;
+}
+
+.badge-highlight.badge-success {
+    background: rgba(34, 197, 94, 0.1);
+    border-color: rgba(34, 197, 94, 0.2);
+    color: var(--color-success-400);
+}
+
+.badge-highlight.badge-success .badge-icon {
+    color: var(--color-success-400);
+}
+
+/* ============================================
+   VALUE GRID - Cards de Valores
+   ============================================ */
+.value-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+.value-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-1);
+    padding: var(--space-5) var(--space-4);
+    background: var(--color-dark-700);
+    border: 2px solid var(--color-dark-500);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    font-family: inherit;
+}
+
+.value-card:hover {
+    border-color: var(--color-gold-500);
+    background: var(--color-dark-600);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-gold-sm);
+}
+
+.value-card-featured {
+    border-color: var(--color-gold-500);
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.03) 100%);
+}
+
+.value-badge {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: var(--space-1) var(--space-3);
+    background: var(--gradient-gold);
+    border-radius: var(--radius-full);
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--color-dark-900);
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.value-amount {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-white);
+}
+
+.value-installment {
+    font-size: var(--font-size-xs);
+    color: var(--color-gray-500);
+}
+
+/* ============================================
+   LEAD FORM
+   ============================================ */
+.lead-form {
+    max-width: 380px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: var(--space-5);
+}
+
+.form-group label {
+    display: block;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-gray-300);
+    margin-bottom: var(--space-2);
+}
+
+.form-group input {
+    width: 100%;
+    padding: var(--space-4) var(--space-5);
+    font-size: var(--font-size-base);
+    font-family: inherit;
+    background: var(--color-dark-700);
+    border: 2px solid var(--color-dark-500);
+    border-radius: var(--radius-md);
+    color: var(--color-white);
+    transition: all var(--transition-base);
+}
+
+.form-group input::placeholder {
+    color: var(--color-gray-600);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--color-gold-500);
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+}
+
+.form-group input.error {
+    border-color: var(--color-error-500);
+}
+
+.form-group input.valid {
+    border-color: var(--color-success-500);
+}
+
+.error-message {
+    display: block;
+    font-size: var(--font-size-xs);
+    color: var(--color-error-500);
+    margin-top: var(--space-2);
+    min-height: 18px;
+}
+
+/* Form Row - Campos lado a lado */
+.form-row {
+    display: flex;
+    gap: var(--space-3);
+    margin-bottom: var(--space-5);
+}
+
+.form-group-half {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+/* Select Styles */
+.form-group select {
+    width: 100%;
+    padding: var(--space-4) var(--space-5);
+    font-size: var(--font-size-base);
+    font-family: inherit;
+    background: var(--color-dark-700);
+    border: 2px solid var(--color-dark-500);
+    border-radius: var(--radius-md);
+    color: var(--color-white);
+    transition: all var(--transition-base);
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23737373' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--space-4) center;
+    padding-right: var(--space-10);
+}
+
+.form-group select:focus {
+    outline: none;
+    border-color: var(--color-gold-500);
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+}
+
+.form-group select:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.form-group select option {
+    background: var(--color-dark-700);
+    color: var(--color-white);
+    padding: var(--space-2);
+}
+
+/* Form Row Responsivo - empilha em mobile */
+@media (max-width: 400px) {
+    .form-row {
+        flex-direction: column;
+        gap: var(--space-4);
+    }
+
+    .form-group-half {
+        width: 100%;
+    }
+}
+
+/* Submit Button */
+.submit-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    width: 100%;
+    padding: var(--space-5) var(--space-6);
+    background: var(--gradient-gold);
+    border: none;
+    border-radius: var(--radius-lg);
+    color: var(--color-dark-900);
+    font-family: inherit;
+    font-size: var(--font-size-base);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    overflow: hidden;
+}
+
+.submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-gold);
+}
+
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.submit-btn.loading .btn-text,
+.submit-btn.loading .btn-arrow {
+    opacity: 0;
+}
+
+.submit-btn.loading .btn-loader {
+    display: block;
+}
+
+.btn-arrow {
+    width: 20px;
+    height: 20px;
+    transition: transform var(--transition-base);
+}
+
+.submit-btn:hover .btn-arrow {
+    transform: translateX(4px);
+}
+
+.btn-loader {
+    display: none;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(0, 0, 0, 0.2);
+    border-top-color: var(--color-dark-900);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.privacy-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    margin-top: var(--space-5);
+    font-size: var(--font-size-xs);
+    color: var(--color-gray-600);
+}
+
+.privacy-icon {
+    width: 14px;
+    height: 14px;
+}
+
+/* ============================================
+   REJECTION MODAL
+   ============================================ */
+.rejection-message {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-modal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-6);
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-base);
+}
+
+.rejection-message.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.rejection-card {
+    position: relative;
+    max-width: 400px;
+    padding: var(--space-10) var(--space-8);
+    background: var(--color-dark-700);
+    border: 1px solid var(--color-dark-500);
+    border-radius: var(--radius-xl);
+    text-align: center;
+    transform: scale(0.9) translateY(20px);
+    transition: transform var(--transition-bounce);
+}
+
+.rejection-message.show .rejection-card {
+    transform: scale(1) translateY(0);
+}
+
+.rejection-close {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-dark-600);
+    border: none;
+    border-radius: 50%;
+    color: var(--color-gray-400);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.rejection-close:hover {
+    background: var(--color-dark-500);
+    color: var(--color-white);
+}
+
+.rejection-close svg {
+    width: 16px;
+    height: 16px;
+}
+
+.rejection-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--space-6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 50%;
+}
+
+.rejection-icon {
+    width: 40px;
+    height: 40px;
+    color: var(--color-gold-500);
+}
+
+.rejection-title {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-white);
+    margin-bottom: var(--space-3);
+}
+
+.rejection-text {
+    font-size: var(--font-size-base);
+    color: var(--color-gray-400);
+    margin-bottom: var(--space-6);
+}
+
+.rejection-cta {
+    padding: var(--space-5);
+    background: rgba(34, 197, 94, 0.05);
+    border: 1px solid rgba(34, 197, 94, 0.15);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-6);
+}
+
+.rejection-suggestion {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-300);
+    margin-bottom: var(--space-3);
+}
+
+.rejection-suggestion strong {
+    color: var(--color-success-400);
+}
+
+.rejection-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--color-success-400);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition-base);
+}
+
+.rejection-link:hover {
+    color: var(--color-success-500);
+}
+
+.rejection-link svg {
+    width: 16px;
+    height: 16px;
+}
+
+.rejection-back {
+    padding: var(--space-3) var(--space-6);
+    background: transparent;
+    border: 1px solid var(--color-dark-400);
+    border-radius: var(--radius-md);
+    color: var(--color-gray-400);
+    font-family: inherit;
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.rejection-back:hover {
+    border-color: var(--color-gray-500);
+    color: var(--color-white);
+}
+
+/* ============================================
+   CONFIRMATION PAGE
+   ============================================ */
+.confirmation-content {
+    padding-top: var(--space-8);
+}
+
+.success-animation {
+    margin-bottom: var(--space-8);
+}
+
+.success-circle {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.success-check {
+    width: 100%;
+    height: 100%;
+    stroke-width: 2;
+    stroke: var(--color-success-500);
+    stroke-miterlimit: 10;
+}
+
+.success-circle-bg {
+    stroke: var(--color-success-500);
+    fill: rgba(34, 197, 94, 0.1);
+    animation: circle-fill 0.4s ease-in-out 0.4s forwards;
+}
+
+.success-check-path {
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: check-draw 0.5s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards;
+}
+
+@keyframes circle-fill {
+    100% { fill: rgba(34, 197, 94, 0.2); }
+}
+
+@keyframes check-draw {
+    100% { stroke-dashoffset: 0; }
+}
+
+.confirmation-card {
+    padding: var(--space-6);
+    background: var(--color-dark-700);
+    border: 1px solid var(--color-dark-500);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-8);
+}
+
+.confirmation-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-400);
+    margin-bottom: var(--space-2);
+}
+
+.confirmation-value {
+    font-size: var(--font-size-3xl);
+    font-weight: 800;
+    color: var(--color-gold-500);
+    margin-bottom: var(--space-4);
+}
+
+.confirmation-text {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-400);
+    line-height: 1.6;
+}
+
+.whatsapp-section {
+    margin-bottom: var(--space-8);
+}
+
+.whatsapp-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-500);
+    margin-bottom: var(--space-3);
+}
+
+.whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-8);
+    background: #25D366;
+    border-radius: var(--radius-lg);
+    color: var(--color-white);
+    font-weight: 700;
+    font-size: var(--font-size-base);
+    text-decoration: none;
+    transition: all var(--transition-base);
+}
+
+.whatsapp-btn:hover {
+    background: #128C7E;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.social-proof {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-dark-600);
+}
+
+.social-proof-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--color-success-500);
+}
+
+.social-proof p {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-500);
+}
+
+.social-proof strong {
+    color: var(--color-gray-300);
+}
+
+/* Tags de confirmação (página 5) */
+.confirmation-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+}
+
+.confirmation-tags .trust-badge {
+    font-size: var(--font-size-xs);
+}
+
+/* ============================================
+   MEDIA QUERIES - Responsividade Mobile-First
+   ============================================ */
+
+/* Mobile - Otimizado para caber na tela sem scroll */
+@media (max-width: 480px) {
+    .progress-header {
+        padding: var(--space-3) var(--space-4);
+    }
+
+    .progress-container {
+        gap: var(--space-2);
+    }
+
+    .progress-info {
+        font-size: var(--font-size-xs);
+    }
+
+    .funnel-page {
+        padding: 75px var(--space-4) var(--space-3);
+        align-items: flex-start;
+    }
+
+    .page-content {
+        width: 100%;
+    }
+
+    .logo-section {
+        margin-bottom: var(--space-2);
+    }
+
+    .logo-image-transparent {
+        max-width: 100px;
+    }
+
+    .headline-group {
+        margin-bottom: var(--space-3);
+    }
+
+    .headline-primary {
+        font-size: var(--font-size-xl);
+        margin-bottom: var(--space-2);
+    }
+
+    .headline-secondary {
+        font-size: var(--font-size-sm);
+    }
+
+    .trust-indicators {
+        margin-bottom: 0;
+        margin-top: var(--space-3);
+    }
+
+    .trust-badge {
+        padding: var(--space-2) var(--space-3);
+        font-size: 11px;
+    }
+
+    .question-section {
+        margin-bottom: 0;
+        margin-top: 10rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .question-highlight {
+        font-size: var(--font-size-base);
+        margin-bottom: var(--space-3);
+    }
+
+    .cta-group {
+        gap: var(--space-2);
+    }
+
+    .cta-divider {
+        margin: var(--space-1) 0;
+    }
+
+    .cta-primary {
+        padding: var(--space-3) var(--space-4);
+    }
+
+    .cta-secondary {
+        padding: var(--space-3) var(--space-4);
+    }
+
+    .value-grid {
+        gap: var(--space-2);
+    }
+
+    .value-card {
+        padding: var(--space-3) var(--space-2);
+    }
+
+    .value-amount {
+        font-size: var(--font-size-base);
+    }
+
+    .value-installment {
+        font-size: 10px;
+    }
+
+    /* Página 5 - Confirmação otimizada */
+    .confirmation-content {
+        padding-top: var(--space-2);
+    }
+
+    .success-animation {
+        margin-bottom: var(--space-3);
+    }
+
+    .success-circle {
+        width: 60px;
+        height: 60px;
+    }
+
+    .confirmation-card {
+        padding: var(--space-3);
+        margin-bottom: var(--space-3);
+    }
+
+    .confirmation-label {
+        font-size: var(--font-size-xs);
+        margin-bottom: var(--space-1);
+    }
+
+    .confirmation-value {
+        font-size: var(--font-size-xl);
+        margin-bottom: var(--space-1);
+    }
+
+    .confirmation-text {
+        font-size: var(--font-size-sm);
+    }
+
+    .confirmation-tags {
+        gap: var(--space-2);
+        margin-bottom: var(--space-3);
+    }
+
+    .confirmation-tags .trust-badge {
+        font-size: 10px;
+        padding: var(--space-1) var(--space-2);
+    }
+
+    .social-proof {
+        padding-top: var(--space-3);
+    }
+
+    .social-proof p {
+        font-size: var(--font-size-sm);
+    }
+
+    .lead-form {
+        max-width: 100%;
+    }
+
+    .form-group {
+        margin-bottom: var(--space-3);
+    }
+
+    .form-group input {
+        padding: var(--space-3) var(--space-4);
+    }
+}
+
+/* Mobile Small */
+@media (max-width: 375px) {
+    .progress-header {
+        padding: var(--space-2) var(--space-3);
+    }
+
+    .funnel-page {
+        padding: 70px var(--space-3) var(--space-2);
+    }
+
+    .logo-image-transparent {
+        max-width: 85px;
+    }
+
+    .headline-primary {
+        font-size: var(--font-size-lg);
+    }
+
+    .headline-secondary {
+        font-size: var(--font-size-xs);
+    }
+
+    .trust-badge {
+        font-size: 10px;
+        padding: var(--space-1) var(--space-2);
+    }
+
+    .question-section {
+        margin-top: 8rem;
+        padding-top: 1.5rem;
+    }
+
+    .question-highlight {
+        font-size: var(--font-size-sm);
+        margin-bottom: var(--space-2);
+    }
+
+    .cta-primary,
+    .cta-secondary {
+        padding: var(--space-2) var(--space-3);
+        font-size: var(--font-size-sm);
+    }
+
+    .cta-icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    .value-amount {
+        font-size: var(--font-size-sm);
+    }
+
+    /* Página 5 - Confirmação extra compacta */
+    .success-circle {
+        width: 50px;
+        height: 50px;
+    }
+
+    .success-animation {
+        margin-bottom: var(--space-2);
+    }
+
+    .confirmation-card {
+        padding: var(--space-2);
+        margin-bottom: var(--space-2);
+    }
+
+    .confirmation-value {
+        font-size: var(--font-size-lg);
+    }
+
+    .confirmation-tags {
+        margin-bottom: var(--space-2);
+    }
+
+    .social-proof {
+        padding-top: var(--space-2);
+    }
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+    .progress-container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .progress-track {
+        flex: 1;
+        max-width: 300px;
+    }
+
+    .funnel-page {
+        padding-top: 120px;
+    }
+
+    .page-content {
+        max-width: 560px;
+    }
+
+    .headline-primary {
+        font-size: var(--font-size-4xl);
+    }
+
+    .value-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .page-content {
+        max-width: 600px;
+    }
+
+    .headline-primary {
+        font-size: var(--font-size-5xl);
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* High Contrast */
+@media (prefers-contrast: high) {
+    :root {
+        --color-gold-500: #FFD700;
+    }
+
+    .cta-primary,
+    .value-card {
+        border: 3px solid currentColor;
+    }
+}
+
+/* Print */
+@media print {
+    .progress-header,
+    .page-background,
+    .cta-group,
+    .whatsapp-section {
+        display: none;
+    }
+}
